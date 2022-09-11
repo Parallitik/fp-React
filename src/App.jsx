@@ -1,18 +1,41 @@
-import { useState } from 'react';
-import { Message } from './components/Message/Message'
-import style from './App.module.scss'
+import { useEffect, useState } from 'react';
+import { MessageList } from './components/MessageList/MessageList';
+import { Form } from './components/Form/Form';
 
 export const App = () => {
-  const [textMessage, setMessage] = useState('Hello React')
+  const [messageList, setMessageList] = useState([]);
 
-  const handleChangeText = (e) => {
-    setMessage(e.target.value)
-  }
+  const addToMessageList = (newMessage) => {
+    setMessageList((prevMessage) => [...prevMessage, newMessage]);};
+
+  const botGreeting = (authorName) => {
+    return {
+      title: 'Bot answer',
+      text: `Hello ${authorName}`,
+      author: 'chatBot',
+    };
+  };
+
+  useEffect(() => {
+    if (
+      messageList.length > 0 &&
+      messageList[messageList.length - 1].author !== 'chatBot'
+    ) {
+      const timeoutBot = setTimeout(() => {
+        addToMessageList(
+          botGreeting(messageList[messageList.length - 1].author)
+        );
+      }, 1500);
+      return () => {
+        clearTimeout(timeoutBot);
+      };
+    }
+  }, [messageList]);
 
   return (
-    <div className="App">
-      <Message text={textMessage} addExclamationPoint={setMessage}/>
-      <input placeholder="Enter text:" className={style.input} onChange={handleChangeText}/>
-    </div>
+    <>
+      <MessageList messageList={messageList} />
+      <Form addNewMessage={addToMessageList} />
+    </>
   );
 };
