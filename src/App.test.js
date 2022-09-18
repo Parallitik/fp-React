@@ -21,7 +21,7 @@ describe("App", () => {
       "Hello from test comp!"
     );
     expect(screen.getByTestId("chat-authorText")).toContainHTML(
-      "<cite role='messageText' data-testid='chat-authorText'>I am Test!</cite>"
+      `<cite role='messageText' data-testid='chat-authorText'>I am Test!</cite>`
     );
   });
 
