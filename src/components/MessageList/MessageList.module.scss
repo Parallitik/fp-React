@@ -1,3 +1,8 @@
+.chatContainer {
+    margin: 0 auto;
+    max-width: 1440px;
+}
+
 .chatTitle {
     margin: 30px 30px;
     text-align: center;
@@ -18,10 +23,6 @@
 .chatMessage {
     padding: 10px 10px;
     border-bottom: 1px solid lightpink;
-
-    &:nth-child(even) {
-        text-align: right;
-    }
 }
 
 .chatInfo {
@@ -31,9 +32,5 @@
 
 .chatText {
     padding-left: 50px;
-
-    &:nth-child(even) {
-        padding-right: 50px;
-    }
 }
 

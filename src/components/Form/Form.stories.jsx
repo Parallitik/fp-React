@@ -7,14 +7,14 @@ export default {
   component: Form,
 };
 
-const Template = (args) => <Form {...args} />;
+// const Template = (args) => <Form {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {};
+// export const Primary = Template.bind({});
+// Primary.args = {};
 
-export const Filled = Template.bind({});
-Filled.args = {
-  title: 'Your message',
-  text: 'Hello! How are you doing?',
-  author: 'Alex',
-};
+// export const Filled = Template.bind({});
+// Filled.args = {
+//   title: 'Your message',
+//   text: 'Hello! How are you doing?',
+//   author: 'Alex',
+// };

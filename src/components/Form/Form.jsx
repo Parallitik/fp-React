@@ -12,7 +12,7 @@ export const Form = ({ addNewMessage }) => {
 
   return (
     <>
-      <form className={style.form} onSubmit={handleSubmit}>
+      <form name="form" className={style.form} onSubmit={handleSubmit}>
         <input
           className={style.input}
           name="text"

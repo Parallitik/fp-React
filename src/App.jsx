@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { MessageList } from './components/MessageList/MessageList';
-import { Form } from './components/Form/Form';
+import { MessageList } from './components/MessageList';
+import { Form } from './components/Form';
 
 export const App = () => {
   const [messageList, setMessageList] = useState([]);
 
   const addToMessageList = (newMessage) => {
-    setMessageList((prevMessage) => [...prevMessage, newMessage]);};
+    setMessageList((prevMessage) => [...prevMessage, newMessage]);
+  };
 
   const botGreeting = (authorName) => {
     return {
