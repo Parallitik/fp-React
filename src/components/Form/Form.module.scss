@@ -1,0 +1,24 @@
+.form {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding: 15px 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.input {
+    margin: 0 0 5px 0;
+    padding: 5px 5px;
+    border: 1px solid #ffdab9;
+}
+
+.btn {
+    color: #ffdab9;
+    padding: 5px 10px;
+    background-color: #fa855e;
+    border-color: #F88158;
+}
