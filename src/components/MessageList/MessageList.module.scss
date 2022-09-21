@@ -1,28 +1,6 @@
 .chatContainer {
-    margin: 0 auto;
-    max-width: 1440px;
-}
-
-.chatTitle {
-    margin: 30px 30px;
-    text-align: center;
-    color: grey;
-}
-
-.chatWrp {
-    border: 1px solid black;
-    border-radius: 15px 15px;
-    min-height: 200px;
-    margin: 0 0 20px 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.chatMessage {
-    padding: 10px 10px;
-    border-bottom: 1px solid lightpink;
+    margin: 0 10px 0 100px;
+    width: 70%;
 }
 
 .chatInfo {

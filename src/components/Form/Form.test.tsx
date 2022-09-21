@@ -4,9 +4,14 @@ import '@testing-library/jest-dom';
 
 describe('Form', () => {
   beforeEach(() => {
-    render(<Form />);
+    render(
+      <Form
+        addNewMessage={function (): void {
+          throw new Error('Function not implemented.');
+        }}
+      />
+    );
   });
-  it('render component', () => {});
   it('render button element', () => {
     expect(screen.queryAllByRole('button').length).toBe(1);
   });
@@ -19,10 +24,10 @@ describe('Form', () => {
   it('render input elements', () => {
     expect(screen.queryAllByRole('textbox').length).toBe(2);
   });
-  it('render input with placeholder "Message"', () => {
-    expect(screen.getByPlaceholderText(/Message/)).toBeInTheDocument();
+  it('render input with placeholder "Ivan"', () => {
+    expect(screen.getByPlaceholderText(/Ivan/)).toBeInTheDocument();
   });
-  it('render input with placeholder "Author"', () => {
-    expect(screen.getByPlaceholderText(/Author/)).toBeInTheDocument();
+  it('render input with placeholder "Hello"', () => {
+    expect(screen.getByPlaceholderText(/Hello/)).toBeInTheDocument();
   });
 });
