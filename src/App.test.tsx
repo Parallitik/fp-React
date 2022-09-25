@@ -1,44 +1,59 @@
-import { App } from './App';
-import { render, screen, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom';
+import { MemoryRouter } from 'react-router-dom';
+
+import { App } from './App';
 
 describe('App', () => {
-  it('render App', () => {
-    render(<App />);
-  });
+  // it('render component', () => {
+  //   render(<App />);
+  // });
 
-  it('check render message to chat container', async () => {
-    render(<App />);
-    const inputMessage = screen.getByPlaceholderText('Hello');
-    const inputAuthor = screen.getByPlaceholderText('Ivan');
-
-    await userEvent.type(inputMessage, 'Hello from test comp!');
-    await userEvent.type(inputAuthor, 'I am Test!');
-    await userEvent.click(screen.getByText(/Send message/));
-
-    expect(screen.getByTestId('chat-messageText')).toContainHTML(
-      'Hello from test comp!'
+  it('wrong url', () => {
+    render(
+      <MemoryRouter initialEntries={['/wrong-url']}>
+        <App />
+      </MemoryRouter>
     );
-    expect(screen.getByTestId('chat-authorText')).toContainHTML(
-      '<cite role="messageText" data-testid="chat-authorText">I am Test!</cite>'
-    );
+
+    expect(screen.getByText('404 page')).toBeInTheDocument();
   });
+  // it('send user message', async () => {
+  //   render(<App />);
 
-  it('check Bots timeout message', async () => {
-    render(<App />);
-    const inputMessage = screen.getByPlaceholderText('Hello');
-    const inputAuthor = screen.getByPlaceholderText('Ivan');
+  //   const input = screen.getByTestId<HTMLInputElement>('input');
+  //   await userEvent.type(input, 'Hello, world!');
 
-    await userEvent.type(inputMessage, 'Hello from test comp!');
-    await userEvent.type(inputAuthor, 'Test timeout!');
-    await userEvent.click(screen.getByText(/Send message/));
+  //   const button = screen.getByTestId('button');
+  //   await userEvent.click(button);
 
-    await waitFor(
-      () => expect(screen.getByText(/Hello Test timeout/)).toBeInTheDocument(),
-      {
-        timeout: 1600,
-      }
-    );
-  });
+  //   expect(screen.getAllByTestId('li').length).toBe(1);
+  // });
+
+  // it('bot answer', async () => {
+  //   render(<App />);
+
+  //   const input = screen.getByTestId<HTMLInputElement>('input');
+  //   await userEvent.type(input, 'Hello, world!');
+
+  //   const button = screen.getByTestId('button');
+  //   await userEvent.click(button);
+
+  //   // Вариант 1
+  //   expect(
+  //     await screen.findByText(/Im BOT/, undefined, { timeout: 1600 })
+  //   ).toBeInTheDocument();
+
+  //   // Вариант 2
+
+  //   await waitFor(
+  //     () => expect(screen.getByText(/Im BOT/)).toBeInTheDocument(),
+  //     {
+  //       timeout: 1600,
+  //     }
+  //   );
+
+  //   //https://jestjs.io/ru/docs/timer-mocks
+  // });
 });

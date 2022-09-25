@@ -1,33 +1,42 @@
 import { Form } from './Form';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 
 describe('Form', () => {
-  beforeEach(() => {
-    render(
-      <Form
-        addNewMessage={function (): void {
-          throw new Error('Function not implemented.');
-        }}
-      />
-    );
+  // let addMessage: jest.Mock<any, any>;
+  // beforeEach(() => {
+  //   addMessage = jest.fn();
+  //   render(<Form addMessage={addMessage} />);
+  // });
+  it('render component', () => {
+    const addMessage = jest.fn();
+    render(<Form addMessage={addMessage} />);
   });
-  it('render button element', () => {
-    expect(screen.queryAllByRole('button').length).toBe(1);
-  });
-  it('button visibility check', () => {
-    expect(screen.getByText(/Send message/)).toBeVisible();
-  });
-  it('render with text button', () => {
-    expect(screen.getByText(/Send message/)).toBeInTheDocument();
-  });
-  it('render input elements', () => {
-    expect(screen.queryAllByRole('textbox').length).toBe(2);
-  });
-  it('render input with placeholder "Ivan"', () => {
-    expect(screen.getByPlaceholderText(/Ivan/)).toBeInTheDocument();
-  });
-  it('render input with placeholder "Hello"', () => {
-    expect(screen.getByPlaceholderText(/Hello/)).toBeInTheDocument();
-  });
+  // it('input change with fireevent', () => {
+  //   const input = screen.getByTestId<HTMLInputElement>('input');
+
+  //   fireEvent.change(input, { target: { value: 'new value' } });
+  //   expect(input.value).toBe('new value');
+  // });
+
+  // it('input change with userevent', async () => {
+  //   const input = screen.getByTestId<HTMLInputElement>('input');
+
+  //   await userEvent.type(input, 'Hello world');
+  //   expect(input.value).toBe('Hello world');
+  // });
+
+  // it('button click with fireEvent', () => {
+  //   const input = screen.getByTestId<HTMLInputElement>('input');
+  //   fireEvent.change(input, { target: { value: 'new value' } });
+  //   expect(input.value).toBe('new value');
+
+  //   const button = screen.getByTestId('button');
+  //   // fireEvent.submit(getByRole(div, "my-form"));
+  //   fireEvent.click(button);
+  //   expect(addMessage).toHaveBeenCalledTimes(1);
+  // });
+
+  //TODO написать тест для tohavebeencalledwith
 });
