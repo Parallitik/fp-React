@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Main } from './pages/Main'
-import { Profile } from './pages/Profile'
+import { Main } from './pages/Main';
+import { Profile } from './pages/Profile';
 import { ChatList } from './components/ChatList';
 import { AUTHOR, Chat, Message, Messages } from './types';
 import { ChatPage } from './pages/ChatPage';
@@ -10,12 +10,12 @@ import { Header } from './components/Header';
 const defaultChats: Chat[] = [
   {
     id: '1',
-    name: 'first'
+    name: 'first',
   },
   {
     id: '2',
-    name: 'second'
-  }
+    name: 'second',
+  },
 ];
 
 const defaultMessages: Messages = {
@@ -24,7 +24,7 @@ const defaultMessages: Messages = {
 };
 
 export const App: FC = () => {
-  const [chats, setChats] = useState<Chat[]>(defaultChats)
+  const [chats, setChats] = useState<Chat[]>(defaultChats);
   const [messages, setMessages] = useState<Messages>(defaultMessages);
   const onAddChat = (newChat: Chat) => {
     setChats([...chats, newChat]);
@@ -41,8 +41,8 @@ export const App: FC = () => {
     });
   };
 
-    return (
-      <Routes>
+  return (
+    <Routes>
       <Route path="/" element={<Header />}>
         <Route index element={<Main />} />
         <Route path="profile" element={<Profile />} />

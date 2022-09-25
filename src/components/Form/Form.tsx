@@ -34,7 +34,7 @@ export const Form: FC<FormProps> = ({ addMessage }) => {
     <>
       <form name="form" className={style.form} onSubmit={handleSubmit}>
         <TextField
-          inputRef={inputRef} 
+          inputRef={inputRef}
           value={value}
           style={{ margin: '5px 5px', padding: '5px 5px' }}
           id="outlined-basic"

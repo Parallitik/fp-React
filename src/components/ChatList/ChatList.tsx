@@ -1,51 +1,51 @@
-import { List, ListItem } from "@mui/material"
-import { FC, useState } from "react"
+import { ListItem } from '@mui/material';
+import { FC, useState } from 'react';
 import { nanoid } from 'nanoid';
-import { Chat } from 'src/types'
+import { Chat } from 'src/types';
 import { NavLink } from 'react-router-dom';
 
 // const nanoid = customAlphabet('1234567890', 10)
 
 interface ChatListProps {
-    chats: Chat[];
-    onAddChat: (chat: Chat) => void;
+  chats: Chat[];
+  onAddChat: (chat: Chat) => void;
 }
 
 export const ChatList: FC<ChatListProps> = ({ chats, onAddChat }) => {
-    const [value, setValue] = useState('');
+  const [value, setValue] = useState('');
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-        if (value) {
-            onAddChat({
-                id: nanoid(),
-                name: value,
-            });
-            setValue('');
-        }
-    };
+    if (value) {
+      onAddChat({
+        id: nanoid(),
+        name: value,
+      });
+      setValue('');
+    }
+  };
 
-    return (
-        <>
-            <ul>
-                {chats.map((chat) => (
-                    <ListItem key={chat.id}>
-                        <NavLink
-                            to={`/chats/${chat.id}`}
-                            style={({ isActive }) => ({
-                                color: isActive ? 'green' : 'blue',
-                            })}
-                        >
-                            {chat.name}
-                        </NavLink>
-                    </ListItem>
-                ))}
-            </ul>
-            <form onSubmit={handleSubmit}>
-                <input value={value} onChange={(e) => setValue(e.target.value)} />
-                <button>create chat</button>
-            </form>
-        </>
-    );
+  return (
+    <>
+      <ul>
+        {chats.map((chat) => (
+          <ListItem key={chat.id}>
+            <NavLink
+              to={`/chats/${chat.id}`}
+              style={({ isActive }) => ({
+                color: isActive ? 'green' : 'blue',
+              })}
+            >
+              {chat.name}
+            </NavLink>
+          </ListItem>
+        ))}
+      </ul>
+      <form onSubmit={handleSubmit}>
+        <input value={value} onChange={(e) => setValue(e.target.value)} />
+        <button>create chat</button>
+      </form>
+    </>
+  );
 };
