@@ -33,7 +33,7 @@ export const Form: FC<FormProps> = ({ addMessage }) => {
   return (
     <>
       <form name="form" className={style.form} onSubmit={handleSubmit}>
-        <TextField
+        {/* <TextField
           inputRef={inputRef}
           value={value}
           style={{ margin: '5px 5px', padding: '5px 5px' }}
@@ -44,7 +44,7 @@ export const Form: FC<FormProps> = ({ addMessage }) => {
           label="Author"
           variant="outlined"
           onChange={(e) => setValue(e.target.value)}
-        />
+        /> */}
         <TextField
           value={value}
           style={{ margin: '5px 5px', padding: '5px 5px' }}

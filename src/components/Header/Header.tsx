@@ -21,7 +21,7 @@ const navigate = [
 export const Header: FC = () => {
   return (
     <>
-      <header style={{ backgroundColor: 'grey' }}>
+      <header style={{ backgroundColor: '#A9A9A9' }}>
         <ul className={style.ul}>
           {navigate.map((item, idx) => (
             <li key={idx}>
