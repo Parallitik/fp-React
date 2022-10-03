@@ -14,7 +14,6 @@ Primary.args = {};
 
 export const Filled = Template.bind({});
 Filled.args = {
-  title: 'Your message',
-  text: 'Hello! How are you doing?',
-  author: 'Alex',
+  textValue: 'Hello! How are you doing?',
+  authorValue: 'Alex',
 };

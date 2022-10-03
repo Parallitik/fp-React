@@ -10,8 +10,8 @@ describe('App', () => {
 
   it('check render message to chat container', async () => {
     render(<App />);
-    const inputMessage = screen.getByPlaceholderText('Message');
-    const inputAuthor = screen.getByPlaceholderText('Author');
+    const inputMessage = screen.getByPlaceholderText('Hello');
+    const inputAuthor = screen.getByPlaceholderText('Ivan');
 
     await userEvent.type(inputMessage, 'Hello from test comp!');
     await userEvent.type(inputAuthor, 'I am Test!');
@@ -27,8 +27,8 @@ describe('App', () => {
 
   it('check Bots timeout message', async () => {
     render(<App />);
-    const inputMessage = screen.getByPlaceholderText('Message');
-    const inputAuthor = screen.getByPlaceholderText('Author');
+    const inputMessage = screen.getByPlaceholderText('Hello');
+    const inputAuthor = screen.getByPlaceholderText('Ivan');
 
     await userEvent.type(inputMessage, 'Hello from test comp!');
     await userEvent.type(inputAuthor, 'Test timeout!');
