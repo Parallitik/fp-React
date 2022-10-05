@@ -1,41 +1,41 @@
 import MUIButton from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { FC, useEffect, useRef, useState } from 'react';
-import { Message } from 'src/types';
+import { useParams } from 'react-router-dom';
+import { AUTHOR, Message } from 'src/types';
 import style from './Form.module.scss';
 
 interface FormProps {
-  addNewMessage: (msg: Message) => void;
+  addMessage: (chatId: string, msg: Message) => void;
 }
 
-export const Form: FC<FormProps> = ({ addNewMessage }) => {
-  const [textValue, setTextValue] = useState('');
-  const [authorValue, setAuthorValue] = useState('');
+export const Form: FC<FormProps> = ({ addMessage }) => {
+  const [value, setValue] = useState('');
+  const { chatId } = useParams();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     inputRef.current?.focus();
-  }, []);
+  }, [addMessage]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addNewMessage({
-      title: 'Your message',
-      author: authorValue,
-      text: textValue,
-    });
-    setTextValue('');
-    setAuthorValue('');
+    if (chatId) {
+      addMessage(chatId, {
+        author: AUTHOR.USER,
+        value,
+      });
+    }
+    setValue('');
   };
 
   return (
     <>
       <form name="form" className={style.form} onSubmit={handleSubmit}>
-        {/* Без атрибута autoFocus автофокус инпута почему-то не работает */}
-        <TextField
-          ref={inputRef}
-          value={authorValue}
+        {/* <TextField
+          inputRef={inputRef}
+          value={value}
           style={{ margin: '5px 5px', padding: '5px 5px' }}
           id="outlined-basic"
           placeholder="Ivan"
@@ -43,10 +43,10 @@ export const Form: FC<FormProps> = ({ addNewMessage }) => {
           type="text"
           label="Author"
           variant="outlined"
-          onChange={(e) => setAuthorValue(e.target.value)}
-        />
+          onChange={(e) => setValue(e.target.value)}
+        /> */}
         <TextField
-          value={textValue}
+          value={value}
           style={{ margin: '5px 5px', padding: '5px 5px' }}
           id="outlined-basic"
           placeholder="Hello"
@@ -54,10 +54,11 @@ export const Form: FC<FormProps> = ({ addNewMessage }) => {
           type="text"
           label="Message"
           variant="outlined"
-          onChange={(e) => setTextValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
         />
         <MUIButton
           style={{ margin: '5px 5px', padding: '5px 5px' }}
+          disabled={!value}
           variant="contained"
           type="submit"
         >
